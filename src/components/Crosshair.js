@@ -116,6 +116,17 @@ export const Crosshair = ({ children }) => {
 
   return (
     <>
+      <div
+        style={{
+          backgroundColor: "green",
+          color: "#000",
+          position: "absolute",
+          top: 0,
+          right: 0,
+        }}
+      >
+        {position.x}, {position.y}
+      </div>
       <div style={leftLineStyle} />
       <div style={rightLineStyle} />
       <div style={topLineStyle} />
