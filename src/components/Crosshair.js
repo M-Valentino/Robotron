@@ -23,6 +23,14 @@ export const Crosshair = ({ children }) => {
         x: e.clientX,
         y: e.clientY,
       });
+
+      const elementUnderCursor = document.elementFromPoint(
+        e.clientX,
+        e.clientY
+      );
+      if (elementUnderCursor && elementUnderCursor.tagName === "A") {
+        alert("link!");
+      }
     };
 
     window.addEventListener("mousemove", onMouseMove);
@@ -41,6 +49,7 @@ export const Crosshair = ({ children }) => {
       height: 1,
       backgroundColor: "green",
       zIndex: 9999,
+      pointerEvents: "none",
     }),
     [position]
   );
@@ -54,6 +63,7 @@ export const Crosshair = ({ children }) => {
       height: 1,
       backgroundColor: "green",
       zIndex: 9999,
+      pointerEvents: "none",
     }),
     [position, dimensions]
   );
@@ -67,6 +77,7 @@ export const Crosshair = ({ children }) => {
       height: position.y - 10,
       backgroundColor: "green",
       zIndex: 9999,
+      pointerEvents: "none",
     }),
     [position]
   );
@@ -80,6 +91,7 @@ export const Crosshair = ({ children }) => {
       height: dimensions.h - position.y - 10,
       backgroundColor: "green",
       zIndex: 9999,
+      pointerEvents: "none",
     }),
     [position, dimensions]
   );
@@ -93,6 +105,8 @@ export const Crosshair = ({ children }) => {
       top: position.y - 10,
       border: "1px solid green",
       boxSizing: "border-box",
+      zIndex: 9999,
+      pointerEvents: "none",
     }),
     [position]
   );
@@ -104,20 +118,7 @@ export const Crosshair = ({ children }) => {
       <div style={topLineStyle} />
       <div style={bottomLineStyle} />
       <div style={centerSquareStyle} />
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100vh",
-          pointerEvents: "none",
-          zIndex: 999,
-          cursor: "none",
-        }}
-      >
-        {children}
-      </div>
+      {children}
     </>
   );
 };

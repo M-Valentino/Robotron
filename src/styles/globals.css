@@ -3,11 +3,19 @@
   --secondary: #000;
 }
 
+* { cursor: none; }
+
 body {
   color: var(--primary);
   background-color: var(--secondary);
   margin: 0;
   padding: 0;
-  cursor: none;
   min-height: 100vh;
+  min-width: 100vw;
+  /* Absolute positioning the body ensures that 
+  the crosshair lines are positioned to thier 
+  nearest ancestor element.  */
+  position: absolute;
+  top: 0;
+  left: 0;
 }

@@ -18,6 +18,7 @@ export default function Home() {
       <Crosshair>
         <main>
           <h1>Robotron</h1>
+          <a href="https://google.com">test</a>
         </main>
       </Crosshair>
     </>
