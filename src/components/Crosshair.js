@@ -55,7 +55,7 @@ export const Crosshair = ({ children }) => {
       backgroundColor: "green",
       zIndex: 9999,
     }),
-    [position]
+    [position, dimensions]
   );
 
   const topLineStyle = useMemo(
@@ -81,7 +81,7 @@ export const Crosshair = ({ children }) => {
       backgroundColor: "green",
       zIndex: 9999,
     }),
-    [position]
+    [position, dimensions]
   );
 
   const centerSquareStyle = useMemo(
