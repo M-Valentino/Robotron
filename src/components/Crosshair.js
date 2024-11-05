@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { Dimensions } from "react-native-web";
 
 export const Crosshair = ({ children }) => {
   const [dimensions, setDimensions] = useState({ w: 0, h: 0 });
@@ -10,19 +11,29 @@ export const Crosshair = ({ children }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       setDimensions({ w: window.innerWidth, h: window.innerHeight });
+      console.log(dimensions);
       window.addEventListener("resize", updateDimensions);
       return () => window.removeEventListener("resize", updateDimensions);
     }
   }, []);
 
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState({ x: 10, y: 10 });
   const [onLink, setOnlink] = useState(false);
+
+  const limitCrossHairBounds = (windowDimension, axisValue) => {
+    if (axisValue < 10) {
+      return 10;
+    } else if (axisValue > windowDimension - 10) {
+      return windowDimension - 10;
+    }
+    return axisValue;
+  };
 
   useEffect(() => {
     const onMouseMove = (e) => {
       setPosition({
-        x: e.clientX,
-        y: e.clientY,
+        x: limitCrossHairBounds(dimensions.w, e.clientX),
+        y: limitCrossHairBounds(dimensions.h, e.clientY),
       });
 
       const elementUnderCursor = document.elementFromPoint(
@@ -41,7 +52,7 @@ export const Crosshair = ({ children }) => {
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
     };
-  }, []);
+  }, [dimensions]);
 
   const leftLineStyle = useMemo(
     () => ({
