@@ -35,7 +35,7 @@ export const Crosshair = ({ children }) => {
   const leftLineStyle = useMemo(
     () => ({
       position: "absolute",
-      width: `calc(${position.x}px - 10px)`,
+      width: position.x - 10,
       top: position.y,
       left: 0,
       height: 1,
@@ -48,9 +48,9 @@ export const Crosshair = ({ children }) => {
   const rightLineStyle = useMemo(
     () => ({
       position: "absolute",
-      width: `calc(${dimensions.w}px - ${position.x}px - 10px)`,
+      width: dimensions.w - position.x - 10,
       top: position.y,
-      left: `calc(${position.x}px + 10px)`,
+      left: position.x + 10,
       height: 1,
       backgroundColor: "green",
       zIndex: 9999,
@@ -64,7 +64,7 @@ export const Crosshair = ({ children }) => {
       width: 1,
       top: 0,
       left: position.x,
-      height: `calc(${position.y}px - 10px)`,
+      height: position.y - 10,
       backgroundColor: "green",
       zIndex: 9999,
     }),
@@ -77,7 +77,7 @@ export const Crosshair = ({ children }) => {
       width: 1,
       bottom: 0,
       left: position.x,
-      height: `calc(${dimensions.h}px - ${position.y}px - 10px)`,
+      height: dimensions.h - position.y - 10,
       backgroundColor: "green",
       zIndex: 9999,
     }),
