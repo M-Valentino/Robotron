@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Dimensions } from "react-native-web";
 
 export const Crosshair = ({ children }) => {
   const [dimensions, setDimensions] = useState({ w: 0, h: 0 });
@@ -129,14 +128,16 @@ export const Crosshair = ({ children }) => {
     <>
       <div
         style={{
-          backgroundColor: "green",
-          color: "#000",
+          borderLeft: "1px solid green",
+          borderBottom: "1px solid green",
+          padding: "0.5rem",
           position: "absolute",
           top: 0,
           right: 0,
         }}
       >
-        {position.x}, {position.y}
+        {String(position.x).padStart(4, "0")},{" "}
+        {String(position.y).padStart(4, "0")}
       </div>
       <div style={leftLineStyle} />
       <div style={rightLineStyle} />
