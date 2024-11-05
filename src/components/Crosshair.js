@@ -16,6 +16,7 @@ export const Crosshair = ({ children }) => {
   }, []);
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [onLink, setOnlink] = useState(false);
 
   useEffect(() => {
     const onMouseMove = (e) => {
@@ -29,7 +30,9 @@ export const Crosshair = ({ children }) => {
         e.clientY
       );
       if (elementUnderCursor && elementUnderCursor.tagName === "A") {
-        alert("link!");
+        setOnlink(true);
+      } else {
+        setOnlink(false);
       }
     };
 
@@ -98,17 +101,17 @@ export const Crosshair = ({ children }) => {
 
   const centerSquareStyle = useMemo(
     () => ({
-      width: 20,
-      height: 20,
+      width: onLink ? 10 : 20,
+      height: onLink ? 10 : 20,
       position: "absolute",
-      left: position.x - 10,
-      top: position.y - 10,
-      border: "1px solid green",
+      left: onLink ? position.x - 5 : position.x - 10,
+      top: onLink ? position.y - 5 : position.y - 10,
+      border: `${onLink ? 4 : 1}px solid green`,
       boxSizing: "border-box",
       zIndex: 9999,
       pointerEvents: "none",
     }),
-    [position]
+    [position, onLink]
   );
 
   return (
