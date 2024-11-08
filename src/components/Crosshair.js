@@ -41,6 +41,7 @@ export const Crosshair = ({ children }) => {
       );
       if (elementUnderCursor && elementUnderCursor.tagName === "A") {
         setOnlink(true);
+        console.log(elementUnderCursor)
       } else {
         setOnlink(false);
       }

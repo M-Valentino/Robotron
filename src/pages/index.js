@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import { Crosshair } from "@/components/crosshair";
+import { Robotyping } from "@/components/robotyping";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -17,7 +18,9 @@ export default function Home() {
     <>
       <Crosshair>
         <main>
-          <h1>Robotron</h1>
+          <h1>
+            <Robotyping text="Robotron" />
+          </h1>
           <a href="https://google.com">test</a>
         </main>
       </Crosshair>
