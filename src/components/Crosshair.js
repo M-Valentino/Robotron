@@ -41,7 +41,7 @@ export const Crosshair = ({ children }) => {
       );
       if (elementUnderCursor && elementUnderCursor.tagName === "A") {
         setOnlink(true);
-        console.log(elementUnderCursor)
+        console.log(elementUnderCursor);
       } else {
         setOnlink(false);
       }
@@ -145,7 +145,14 @@ export const Crosshair = ({ children }) => {
       <div style={topLineStyle} />
       <div style={bottomLineStyle} />
       <div style={centerSquareStyle} />
-      {children}
+      <div
+        style={{
+          overflowY: "scroll",
+          height: "100vh",
+        }}
+      >
+        {children}
+      </div>
     </>
   );
 };
