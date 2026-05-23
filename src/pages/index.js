@@ -3,26 +3,18 @@ import { Crosshair } from "@/components/Crosshair";
 import { Robotyping } from "@/components/Robotyping";
 import { RoboImage } from "@/components/RoboImage";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import { Inconsolata } from "next/font/google";
+const inconsolata = Inconsolata({ subsets: ["latin"] });
 
 export default function Home() {
   return (
     <>
       <Crosshair>
         <main
-          
+           className={`${inconsolata.className}`}
         >
           <h1>
-            <Robotyping text="Robotron" />
+            <Robotyping text="Mark Valentino" />
           </h1>
           <a href="https://google.com">test</a>
           <br />
