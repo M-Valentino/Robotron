@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import { Crosshair } from "@/components/Crosshair";
 import { Robotyping } from "@/components/Robotyping";
 import { RoboImage } from "@/components/RoboImage";
+import {ThreeDButton} from "@/components/ThreeDButton";
 
 import { Inconsolata } from "next/font/google";
 const inconsolata = Inconsolata({ subsets: ["latin"] });
@@ -19,6 +20,7 @@ export default function Home() {
           <a href="https://google.com">test</a>
           <br />
           <RoboImage src="parrot.jpg" />
+          <ThreeDButton/>
         </main>
       </Crosshair>
     </>
