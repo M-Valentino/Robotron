@@ -4,6 +4,7 @@
   height: 50px;
   margin: 100px;
 }
+
 .threedbtn-container {
   transform-style: preserve-3d;
 }
@@ -67,11 +68,21 @@
 
 @keyframes spin-vertical {
   from {
-    transform: rotate3d(0, 0, 0, 0);
+    transform: rotateX(0deg);
   }
 
   to {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotateX(360deg);
+  }
+}
+
+@keyframes spin-vertical-reverse {
+  from {
+    transform: rotateX(360deg);
+  }
+
+  to {
+    transform: rotateX(0deg);
   }
 }
 
@@ -91,7 +102,7 @@
   }
 
   to {
-    transform: translateZ(-1000px);
+    transform: translateZ(-4000px);
   }
 }
 
@@ -103,9 +114,14 @@
   animation: wiggle 2s linear infinite alternate-reverse;
 }
 
-.threedbtn-container:hover {
+.threedbtn-container {
   transform-style: preserve-3d;
-  animation: spin-vertical 0.8s linear forwards reverse;
+  transform: rotateX(0deg);
+  transition: transform 0.8s ease;
+}
+
+.threedbtn-container:hover {
+   transform: rotateX(360deg);
 }
 
 .threedbtn:active {
@@ -114,5 +130,5 @@
 }
 
 .threedbtn-container:active {
-  animation: move-away 1s linear forwards;
+  animation: move-away 1s ease-in forwards;
 }
