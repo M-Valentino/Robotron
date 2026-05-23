@@ -13,9 +13,8 @@
 }
 
 .face {
-  border: 2px solid #2a2;
+  border: 1px solid #2a2;
   position: absolute;
-  opacity: 0.5;
   display: flex;
   align-items: center;
   justify-content: center;
