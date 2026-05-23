@@ -1,14 +1,10 @@
-.container {
-  width: 200px;
-  height: 200px;
+.scene {
   perspective: 500px;
+  width: 200px;
+  height: 50px;
   margin: 100px;
 }
-
-.cube {
-  position: relative;
-  width: 200px;
-  height: 200px;
+.threedbtn-container {
   transform-style: preserve-3d;
 }
 
@@ -26,6 +22,7 @@
   width: 200px;
   height: 100px;
   transform: translateZ(50px);
+  user-select: none;
 }
 
 .back {
@@ -58,7 +55,7 @@
   transform: translateY(50px) rotateX(-90deg);
 }
 
-@keyframes turn {
+@keyframes wiggle {
   from {
     transform: rotate3d(0, 0, 0, 0);
   }
@@ -68,10 +65,54 @@
   }
 }
 
-.cube {
+@keyframes spin-vertical {
+  from {
+    transform: rotate3d(0, 0, 0, 0);
+  }
+
+  to {
+    transform: rotate3d(1, 0, 0, 360deg);
+  }
+}
+
+@keyframes spin-out-threedbtn {
+  from {
+    transform: rotate3d(0, 0, 0, 0);
+  }
+
+  to {
+    transform: rotate3d(0, 1, 0, 360deg);
+  }
+}
+
+@keyframes move-away {
+  from {
+    transform: translateZ(0);
+  }
+
+  to {
+    transform: translateZ(-1000px);
+  }
+}
+
+.threedbtn {
   position: relative;
   width: 200px;
-  height: 200px;
+  height: 50px;
   transform-style: preserve-3d;
-  animation: turn 2s linear infinite alternate-reverse;
+  animation: wiggle 2s linear infinite alternate-reverse;
+}
+
+.threedbtn-container:hover {
+  transform-style: preserve-3d;
+  animation: spin-vertical 0.8s linear forwards reverse;
+}
+
+.threedbtn:active {
+  transform-style: preserve-3d;
+  animation: spin-out-threedbtn 0.5s linear infinite;
+}
+
+.threedbtn-container:active {
+  animation: move-away 1s linear forwards;
 }
